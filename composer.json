@@ -7,7 +7,7 @@
         "name" : "Alexey Samara",
         "role": "lead",
         "email" : "lion.samara@gmail.com",
-        "homepage": "https://github.com/wow-apps"
+        "homepage": "https://wow-apps.pro"
     }],
     "support": {
         "issues": "https://github.com/wow-apps/symfony-slack-bot/issues",
@@ -26,12 +26,11 @@
     ],
     "require" : {
         "php": "^7.0",
-        "symfony/symfony": "^3.0",
         "guzzlehttp/guzzle": "^6.0"
     },
     "autoload" : {
         "psr-4" : {
-            "Wowapps\\SlackBundle\\" : ""
+            "WowApps\\SlackBundle\\" : ""
         }
     }
 }
