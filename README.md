@@ -1,37 +1,34 @@
-![SlackBot banner](http://cdn.wow-apps.pro/slackbot/slackbot-banner.jpg)
+![SlackBot banner](http://cdn.wow-apps.pro/slackbot/symfony-slack-bot-banner-v2.png)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/9e427ba8-ceee-47a4-aeef-a788b9875064/big.png)](https://insight.sensiolabs.com/projects/9e427ba8-ceee-47a4-aeef-a788b9875064)
 
-[![Packagist Pre Release](https://img.shields.io/packagist/v/wow-apps/symfony-slack-bot.svg?maxAge=2592000?style=flat-square)](https://packagist.org/packages/wow-apps/symfony-slack-bot)
-[![Packagist](https://img.shields.io/packagist/dt/wow-apps/symfony-slack-bot.svg)](https://packagist.org/packages/wow-apps/symfony-slack-bot)
-[![Build Status](https://scrutinizer-ci.com/g/wow-apps/symfony-slack-bot/badges/build.png?b=master)](https://scrutinizer-ci.com/g/wow-apps/symfony-slack-bot/build-status/master)
-[![PHP version](https://img.shields.io/badge/PHP-%5E7.0-blue.svg?style=flat-square)](http://php.net/manual/ru/migration70.new-features.php)
-[![Symfony version](https://img.shields.io/badge/Symfony-%5E3.0-green.svg?style=flat-square)](http://symfony.com/)
-[![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg?style=flat-square)](https://raw.githubusercontent.com/wow-apps/symfony-slack-bot/master/LICENSE)
-[![Coding Style](https://img.shields.io/badge/Coding%20Style-PSR--2-brightgreen.svg)](http://www.php-fig.org/psr/psr-2/)
-[![Code Climate](https://codeclimate.com/github/wow-apps/symfony-slack-bot/badges/gpa.svg)](https://codeclimate.com/github/wow-apps/symfony-slack-bot)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ce3fffd811f2463a94ed4065a341885a)](https://www.codacy.com/app/lion-samara/symfony-slack-bot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=wow-apps/symfony-slack-bot&amp;utm_campaign=Badge_Grade)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/wow-apps/symfony-slack-bot/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/wow-apps/symfony-slack-bot/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/9e427ba8-ceee-47a4-aeef-a788b9875064/mini.png)](https://insight.sensiolabs.com/projects/9e427ba8-ceee-47a4-aeef-a788b9875064)
+[![Packagist Pre Release](https://img.shields.io/packagist/v/wow-apps/symfony-slack-bot.svg?maxAge=2592000&style=flat-square)](https://packagist.org/packages/wow-apps/symfony-slack-bot)
+[![Packagist](https://img.shields.io/packagist/dt/wow-apps/symfony-slack-bot.svg?style=flat-square)](https://packagist.org/packages/wow-apps/symfony-slack-bot)
+[![Travis](https://img.shields.io/travis/wow-apps/symfony-slack-bot.svg?style=flat-square)](https://travis-ci.org/wow-apps/symfony-slack-bot)
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/wow-apps/symfony-slack-bot.svg?style=flat-square)](https://codeclimate.com/github/wow-apps/symfony-slack-bot)
+[![Codacy grade](https://img.shields.io/codacy/grade/ce3fffd811f2463a94ed4065a341885a.svg?style=flat-square)](https://www.codacy.com/app/lion-samara/symfony-slack-bot)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/wow-apps/symfony-slack-bot.svg?style=flat-square)](https://scrutinizer-ci.com/g/wow-apps/symfony-slack-bot/?branch=master)
+[![Scrutinizer Build](https://img.shields.io/scrutinizer/build/g/wow-apps/symfony-slack-bot.svg?style=flat-square)](https://scrutinizer-ci.com/g/wow-apps/symfony-slack-bot/?branch=master)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/9e427ba8-ceee-47a4-aeef-a788b9875064.svg?style=flat-square)](https://insight.sensiolabs.com/projects/9e427ba8-ceee-47a4-aeef-a788b9875064)
 
 
-# SlackBot for Symfony 3
+# Symfony Slack Bot
 
-Simple Symfony 3 Bundle for sending messages to Slack via [incoming webhooks](https://api.slack.com/incoming-webhooks).
+Simple Symfony 3 and 4 Bundle for sending customizeable messages to Slack via [incoming webhooks](https://api.slack.com/incoming-webhooks).
 
-## Installation:
-
-### Requires:
+## Requires:
 
 * PHP 7.0+
 * Symfony 3.0+
 * Guzzle Client 6.0+
 
+## Installation:
+
 ### Step 1: Download the Bundle
 
 ```json
 "require": {
-        "wow-apps/symfony-slack-bot": "^3"
+        "wow-apps/symfony-slack-bot": "^3.2"
 }
 ```
 
@@ -41,7 +38,7 @@ or
 $ composer require wow-apps/symfony-slack-bot 
 ```
 
-### Step 2: Enable the Bundle
+### Step 2: Enable the Bundle (skip for Symfony 4)
 
 ```php
 // ./app/AppKernel.php
@@ -60,13 +57,13 @@ public function registerBundles()
 ```
 
 
-### Step 3: Add configuration
+### Step 3: Add configuration (skip for Symfony 4)
 
 ```yaml
 # SlackBot Configuration
 wow_apps_slack:
     api_url: ""
-    default_icon: "http://cdn.wow-apps.pro/slackbot/slack-bot-icon-48.png"
+    default_icon: "//cdn.wow-apps.pro/slackbot/slack-bot-icon-48.png"
     default_channel: "general"
     quote_color:
         default: "#607D8B"
@@ -81,7 +78,7 @@ wow_apps_slack:
 To test your configuration, send test message by next command:
 
 ```bash
-php ./bin/console wowapps:slackbot:test
+./bin/console wowapps:slackbot:test
 ```
 
 ![Test command result preview](http://cdn.wow-apps.pro/slackbot/slackbot_preview.jpg)
@@ -99,6 +96,15 @@ php ./bin/console wowapps:slackbot:test
 Follow news and updates in my Telegram channel [@wow_apps_pro](https://t.me/wow_apps_pro) or Twitter [@alexey_samara_](https://twitter.com/alexey_samara_)
 
 # Changelog:
+
+* 3.2.4
+    * Changed Travis-CI configuration
+
+* 3.2.3
+    * Changed README file for Symfony 4 support
+
+* 3.2.2
+    * Changed support for auto configuring bundle in Symfony Flex
 
 * 3.2.0
     * Removed symfony/symfony dependency for Symfony Flex
@@ -119,3 +125,11 @@ Follow news and updates in my Telegram channel [@wow_apps_pro](https://t.me/wow_
     * Changed test command from `slackbot:test` to `wowapps:slackbot:test` for a single standard of all my Bundles
     * Removed unused Controller
     * Removed empty tests
+
+# License
+
+[MIT](https://github.com/wow-apps/symfony-slack-bot/blob/master/LICENSE) © 2016 - 2018 [Alexey Samara](https://wow-apps.pro) & [contributors](https://github.com/wow-apps/symfony-slack-bot/graphs/contributors)
+
+# Contribute
+
+Do you want to make a change? Pull requests are welcome.

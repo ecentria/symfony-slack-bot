@@ -1,36 +1,24 @@
-os: linux
-
 language: php
-
-php:
-  - 7.0
-
-install: true
-
 sudo: false
-
-branches:
-  only:
-      - master
 
 cache:
     directories:
-        - $HOME/.composer/cache
+        - vendor
+        - $HOME/.composer/cache/files
 
-env:
-  matrix:
-    - COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
+matrix:
+    fast_finish: true
+    include:
+        - php: 7.1
+          env: SKELETON_VERSION="^3.4"
+        - php: 7.1
+          env: SKELETON_VERSION="^4.0"
 
-before_script:
-  - travis_retry composer self-update
-  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
+before_install:
+    - phpenv config-rm xdebug.ini || true
 
-#script:
-#  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+install:
+    - composer create-project "symfony/skeleton:${SKELETON_VERSION}" flex
+    - composer config extra.symfony.allow-contrib true
 
-after_script:
-    - |
-      if [[ "$TRAVIS_PHP_VERSION" != '7.0' ]]; then
-        wget https://scrutinizer-ci.com/ocular.phar
-        php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-      fi
+script: ./vendor/bin/phpunit --verbose
